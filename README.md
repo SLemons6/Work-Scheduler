@@ -14,7 +14,7 @@ The scheduler will also save previous user input and color code time blocks base
 ## Website
 https://slemons6.github.io/work-scheduler/
 
-<img src="./assets/Images/work scheduler screenshot.jpg" 
+<img src="./assets/images/work scheduler screenshot.jpg" 
 alt="Screenshot of Work Day Scheduler website"/>
 
 ## Contribution
