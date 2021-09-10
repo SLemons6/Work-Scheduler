@@ -1,8 +1,11 @@
 const minute = 60 * 1000;
+// retrieve previous textarea input 
 var savedEvents = JSON.parse(localStorage.getItem("savedEvents")) || {};
 
+// find current date to display on header 
 $("#currentDay").text(dayjs().format("dddd, MMMM Do"));
 
+// select text areas from each hour row
 $(".time-block").each(function() {
     var hour = $(this)
         .find(".hour")
@@ -14,6 +17,7 @@ $(".time-block").each(function() {
     }
 });
 
+// adjust time block classes based on current vs scheduled task times
 var setTimeBlockColor = function(timeBlockEl) {
     // get time from task element
     var hour = $(timeBlockEl)
@@ -27,12 +31,13 @@ var setTimeBlockColor = function(timeBlockEl) {
     var textEl = $(timeBlockEl)
         .find("textarea");
 
-    // remove any old classes from element
+    // remove any old classes from hour textarea elements
     $(textEl).removeClass("past present future");
 
+    // find current time 
     var currentHour = dayjs().hour();
 
-    // apply new class if task is near/over due date
+    // apply new class based on time determined by currentHour var
     if (time.hour() === currentHour) {
         $(textEl).addClass("present")
     } else if (time.hour() > currentHour) {
@@ -42,6 +47,7 @@ var setTimeBlockColor = function(timeBlockEl) {
     }
 };
 
+// save input from textareas when user clicks save button
 $('.saveBtn').click(function() {
     var timeBlockEl = $(this).parent(".time-block");
     var hour = $(timeBlockEl)
@@ -56,7 +62,7 @@ $('.saveBtn').click(function() {
 
 
 
-
+// check status of each time block every minute
 setInterval(function() {
     $(".time-block").each(function() {
         setTimeBlockColor($(this));
