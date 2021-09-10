@@ -59,9 +59,6 @@ $('.saveBtn').click(function() {
     localStorage.setItem("savedEvents", JSON.stringify(savedEvents));
 })
 
-
-
-
 // check status of each time block every minute
 setInterval(function() {
     $(".time-block").each(function() {
